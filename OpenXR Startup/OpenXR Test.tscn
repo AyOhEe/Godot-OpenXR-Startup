@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://c2g6jh3iaih1k"]
+
+[ext_resource type="Script" path="res://Godot OpenXR Startup/OpenXR Startup/OpenXR.cs" id="1_k133p"]
+[ext_resource type="Environment" uid="uid://vtkujg76uwg2" path="res://Nicer Sky.tres" id="2_f3ive"]
+[ext_resource type="PackedScene" uid="uid://cyb2l1vcms8n0" path="res://Godot OpenXR Startup/OpenXR Startup/CameraRig.tscn" id="3_4uji2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wrvt"]
+albedo_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4jq7f"]
+material = SubResource("StandardMaterial3D_1wrvt")
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pdql6"]
+size = Vector3(10, 0.01, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w0x5d"]
+albedo_color = Color(1, 0.270588, 0.278431, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ge5f"]
+material = SubResource("StandardMaterial3D_w0x5d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkt40"]
+albedo_color = Color(0, 0.615686, 0.905882, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sns0x"]
+material = SubResource("StandardMaterial3D_gkt40")
+size = Vector3(2, 2, 2)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_k133p")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_f3ive")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_4jq7f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("BoxShape3D_pdql6")
+
+[node name="Crate" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.68215, -0.00090992, 0.731211, 0.000608157, 1, 0.000677048, -0.731212, -1.71847e-05, 0.682151, -2.9907, 0.499887, 2.26291)
+mesh = SubResource("BoxMesh_7ge5f")
+
+[node name="Crate2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.10413, -0.00090992, 0.994563, -0.000111814, 1, 0.000903187, -0.994564, -1.71847e-05, -0.10413, -2.09256, 0.500113, -2.24362)
+mesh = SubResource("BoxMesh_7ge5f")
+
+[node name="BigCrate" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.960333, 0, 0.278857, 0, 1, 0, -0.278857, 0, 0.960333, 2.89207, 1, 1.12391)
+mesh = SubResource("BoxMesh_sns0x")
+
+[node name="CameraRig" parent="." instance=ExtResource("3_4uji2")]
