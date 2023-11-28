@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2g6jh3iaih1k"]
+[gd_scene load_steps=12 format=3 uid="uid://c2g6jh3iaih1k"]
 
-[ext_resource type="Script" path="res://addons/Godot-OpenXR-Startup/OpenXR Startup/OpenXR.cs" id="1_csmp3"]
 [ext_resource type="PackedScene" uid="uid://cyb2l1vcms8n0" path="res://addons/Godot-OpenXR-Startup/OpenXR Startup/CameraRig.tscn" id="3_4uji2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qd38j"]
@@ -42,7 +41,6 @@ material = SubResource("StandardMaterial3D_gkt40")
 size = Vector3(2, 2, 2)
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_csmp3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_k6jgy")

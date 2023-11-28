@@ -26,6 +26,29 @@ public partial class CameraRig : XROrigin3D
 
         RightController = GetNode<XRController3D>("RightHand");
         RightWrist = RightController.GetNode<Node3D>("RightWrist");
+
+
+        //configure the rig to use XR
+        StartRigOpenXR();
+    }
+
+    private void StartRigOpenXR()
+    {
+        XRInterface _xrInterface = XRServer.FindInterface("OpenXR");
+        if (_xrInterface != null && _xrInterface.IsInitialized())
+        {
+            GD.Print("OpenXR initialized successfully");
+
+
+            // Turn off v-sync!
+            DisplayServer.WindowSetVsyncMode(DisplayServer.VSyncMode.Disabled);
+            // Change our viewport to output to the HMD
+            GetViewport().UseXR = true;
+        }
+        else
+        {
+            GD.Print("OpenXR not initialized, please check if your headset is connected");
+        }
     }
 
     #region Getters
