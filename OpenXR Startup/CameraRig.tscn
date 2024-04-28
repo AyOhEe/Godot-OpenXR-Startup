@@ -24,3 +24,11 @@ pose = &"palm_pose"
 
 [node name="RightWrist" type="Node3D" parent="RightHand"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.01, 0.04)
+
+[node name="LeftAim" type="XRController3D" parent="."]
+tracker = &"left_hand"
+pose = &"aim"
+
+[node name="RightAim" type="XRController3D" parent="."]
+tracker = &"right_hand"
+pose = &"aim"

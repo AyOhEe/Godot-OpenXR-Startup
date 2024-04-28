@@ -10,9 +10,11 @@ public partial class CameraRig : XROrigin3D
     public XRCamera3D Camera { get; private set; }
 
     public XRController3D LeftController { get; private set; }
+    public XRController3D LeftAim { get; private set; }
     public Node3D LeftWrist { get; private set; }
 
     public XRController3D RightController { get; private set; }
+    public XRController3D RightAim { get; private set; }
     public Node3D RightWrist { get; private set; }
 
 
@@ -22,9 +24,11 @@ public partial class CameraRig : XROrigin3D
         Camera = GetNode<XRCamera3D>("Camera");
 
         LeftController = GetNode<XRController3D>("LeftHand");
+        LeftAim = GetNode<XRController3D>("LeftAim");
         LeftWrist = LeftController.GetNode<Node3D>("LeftWrist");
 
         RightController = GetNode<XRController3D>("RightHand");
+        LeftAim = GetNode<XRController3D>("RightAim");
         RightWrist = RightController.GetNode<Node3D>("RightWrist");
 
 
